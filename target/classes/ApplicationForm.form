@@ -1,0 +1,129 @@
+{
+  "components": [
+    {
+      "label": "Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_051jm3a",
+        "columns": null
+      },
+      "id": "Field_1f75sy1",
+      "key": "name",
+      "validate": {
+        "required": true
+      },
+      "defaultValue": "Rakesh"
+    },
+    {
+      "label": "Address",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0uiwjus",
+        "columns": null
+      },
+      "id": "Field_1t66unm",
+      "key": "address",
+      "validate": {
+        "required": true
+      },
+      "defaultValue": "Pune"
+    },
+    {
+      "label": "Contact Number",
+      "type": "number",
+      "layout": {
+        "row": "Row_0ytukfy",
+        "columns": null
+      },
+      "id": "Field_16tfo42",
+      "key": "contactNumber",
+      "validate": {
+        "required": true,
+        "min": 10
+      },
+      "defaultValue": 89065328
+    },
+    {
+      "label": "Cureent Employee",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0fnty7g",
+        "columns": null
+      },
+      "id": "Field_1muno32",
+      "key": "currentEmployee",
+      "defaultValue": "Software Developer"
+    },
+    {
+      "label": "Salary",
+      "type": "number",
+      "layout": {
+        "row": "Row_1ee72ew",
+        "columns": null
+      },
+      "id": "Field_0ee2mar",
+      "key": "salary",
+      "validate": {
+        "required": true
+      },
+      "defaultValue": 1200000
+    },
+    {
+      "label": "Loan Amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_0kqt9o6",
+        "columns": null
+      },
+      "id": "Field_0wrzpre",
+      "key": "loanAmount",
+      "description": "Enter the loan amount you are expecting",
+      "defaultValue": 600000
+    },
+    {
+      "values": [
+        {
+          "label": "Home Loan",
+          "value": "Home Loan"
+        },
+        {
+          "label": "Personal Loan",
+          "value": "Personal Loan"
+        },
+        {
+          "label": "Car Loan",
+          "value": "Car Loan"
+        },
+        {
+          "label": "Gold Loan",
+          "value": "Gold Loan"
+        },
+        {
+          "label": "Education Loan",
+          "value": "Education Loan"
+        }
+      ],
+      "label": "Loan Type",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0p902rt",
+        "columns": null
+      },
+      "id": "Field_1mg5p02",
+      "key": "loanType",
+      "validate": {
+        "required": true
+      },
+      "defaultValue": "Home Loan"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Application_Details",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.24.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.20.0",
+  "schemaVersion": 16
+}

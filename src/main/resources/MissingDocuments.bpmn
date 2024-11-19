@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1vczj8a" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.22.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <bpmn:process id="Process_Missing_documents" name="Missing documents" isExecutable="true" camunda:historyTimeToLive="P180D">
+    <bpmn:userTask id="NeedSomeMoreDocumentsTask" name="Need some more documents">
+      <bpmn:extensionElements>
+        <camunda:formData />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1uh20wq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0pd56su</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="NotifiedEndEvent" name="Notified">
+      <bpmn:incoming>Flow_0znn2ct</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:startEvent id="DocumentSubmissionInitatedStartEvent" name="Document submission initated">
+      <bpmn:outgoing>Flow_1uh20wq</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1uh20wq" sourceRef="DocumentSubmissionInitatedStartEvent" targetRef="NeedSomeMoreDocumentsTask" />
+    <bpmn:sequenceFlow id="Flow_0pd56su" sourceRef="NeedSomeMoreDocumentsTask" targetRef="NotifyUserTask" />
+    <bpmn:sequenceFlow id="Flow_0znn2ct" sourceRef="NotifyUserTask" targetRef="NotifiedEndEvent" />
+    <bpmn:userTask id="NotifyUserTask" name="Notify user">
+      <bpmn:incoming>Flow_0pd56su</bpmn:incoming>
+      <bpmn:outgoing>Flow_0znn2ct</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Missing_documents">
+      <bpmndi:BPMNShape id="BPMNShape_00szzuf" bpmnElement="NeedSomeMoreDocumentsTask">
+        <dc:Bounds x="280" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_016qdia" bpmnElement="NotifiedEndEvent">
+        <dc:Bounds x="592" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="591" y="145" width="38" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0ltqfat" bpmnElement="DocumentSubmissionInitatedStartEvent">
+        <dc:Bounds x="162" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="152" y="145" width="56" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09xuptp_di" bpmnElement="NotifyUserTask">
+        <dc:Bounds x="430" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_1wc777n" bpmnElement="Flow_1uh20wq">
+        <di:waypoint x="198" y="120" />
+        <di:waypoint x="280" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_080qwd6" bpmnElement="Flow_0pd56su">
+        <di:waypoint x="380" y="120" />
+        <di:waypoint x="430" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1m24bkd" bpmnElement="Flow_0znn2ct">
+        <di:waypoint x="530" y="120" />
+        <di:waypoint x="592" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

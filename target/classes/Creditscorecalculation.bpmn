@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0r909ze" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.21.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <bpmn:process id="CreditscorecalculationProcess" name="Creditscorecalculation" isExecutable="true" camunda:historyTimeToLive="P180D">
+    <bpmn:startEvent id="CreditScoreCalculationInitiatedStartEvent" name="Credit score calculation initiated">
+      <bpmn:outgoing>Flow_1rolbgg</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1rolbgg" sourceRef="CreditScoreCalculationInitiatedStartEvent" targetRef="EnterScoresTask" />
+    <bpmn:sequenceFlow id="Flow_1yshd1s" sourceRef="CalculateCreditScoreTask" targetRef="CreditScoreCalculationEndedEndEvent" />
+    <bpmn:endEvent id="CreditScoreCalculationEndedEndEvent" name="Credit score calculation ended">
+      <bpmn:incoming>Flow_1yshd1s</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="EnterScoresTask" name="Enter Scores">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="age" label="Age" type="long">
+            <camunda:validation />
+          </camunda:formField>
+          <camunda:formField id="income" label="Income" type="long" />
+          <camunda:formField id="creditHistory" label="Credit History" type="long" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1rolbgg</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hb4el1</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="CalculateCreditScoreTask" name="Calculate credit score" camunda:type="external" camunda:topic="creditScoreCalculation">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:outputParameter name="credit_score">${credit_score}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0hb4el1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yshd1s</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0hb4el1" sourceRef="EnterScoresTask" targetRef="CalculateCreditScoreTask" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="CreditscorecalculationProcess">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="CreditScoreCalculationInitiatedStartEvent">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="167" y="142" width="60" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1i9zmh4_di" bpmnElement="EnterScoresTask">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18cmkyg_di" bpmnElement="CalculateCreditScoreTask">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1szax8u_di" bpmnElement="CreditScoreCalculationEndedEndEvent">
+        <dc:Bounds x="642" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="617" y="142" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1rolbgg_di" bpmnElement="Flow_1rolbgg">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yshd1s_di" bpmnElement="Flow_1yshd1s">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="642" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hb4el1_di" bpmnElement="Flow_0hb4el1">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

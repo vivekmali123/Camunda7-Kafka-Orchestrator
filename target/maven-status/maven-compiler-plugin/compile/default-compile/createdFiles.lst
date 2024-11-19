@@ -1,0 +1,8 @@
+com\mbi\loan\originating\system\LoggerDelegate.class
+com\mbi\loan\originating\system\CamundaApplication.class
+com\mbi\loan\originating\system\ApplicationMain.class
+com\mbi\loan\originating\system\GmailSender$1.class
+com\mbi\loan\originating\system\ProcessConstants.class
+com\mbi\loan\originating\system\AssignExpert.class
+com\mbi\loan\originating\system\GmailSender.class
+com\mbi\loan\originating\system\ApprovalNotification.class

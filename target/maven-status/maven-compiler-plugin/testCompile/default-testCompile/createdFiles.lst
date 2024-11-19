@@ -1,0 +1,3 @@
+com\mbi\loan\originating\system\ProcessScenarioTest.class
+com\mbi\loan\originating\system\InMemoryH2Test.class
+com\mbi\loan\originating\system\ProcessUnitTest.class

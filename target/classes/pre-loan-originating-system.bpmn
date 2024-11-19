@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1wu9jyg" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.21.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+  <bpmn:process id="Process_preloanoriginating" name="Pre loan originating system" isExecutable="true" camunda:historyTimeToLive="P180D">
+    <bpmn:startEvent id="StartEvent_1" name="Pre loan originating system">
+      <bpmn:outgoing>Flow_174u2i2</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_174u2i2" sourceRef="StartEvent_1" targetRef="Activity_1dhfofp" />
+    <bpmn:userTask id="Activity_1dhfofp" name="Loan product recommendation">
+      <bpmn:incoming>Flow_174u2i2</bpmn:incoming>
+      <bpmn:outgoing>Flow_0g2f32p</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_02nu0pn" name="Real-time property valuation" camunda:delegateExpression="${kafkaProducerDelegate}">
+      <bpmn:incoming>Flow_0g2f32p</bpmn:incoming>
+      <bpmn:outgoing>Flow_01uutct</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_1q8l5l9">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_01uutct</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_01uutct" sourceRef="Activity_02nu0pn" targetRef="Event_1q8l5l9" />
+    <bpmn:sequenceFlow id="Flow_0g2f32p" sourceRef="Activity_1dhfofp" targetRef="Activity_02nu0pn" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_preloanoriginating">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="182" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="156" y="155" width="89" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mzhba0_di" bpmnElement="Activity_1dhfofp">
+        <dc:Bounds x="270" y="90" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_181ju9z_di" bpmnElement="Activity_02nu0pn">
+        <dc:Bounds x="480" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1q8l5l9_di" bpmnElement="Event_1q8l5l9">
+        <dc:Bounds x="652" y="112" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_174u2i2_di" bpmnElement="Flow_174u2i2">
+        <di:waypoint x="218" y="130" />
+        <di:waypoint x="270" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01uutct_di" bpmnElement="Flow_01uutct">
+        <di:waypoint x="580" y="130" />
+        <di:waypoint x="652" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0g2f32p_di" bpmnElement="Flow_0g2f32p">
+        <di:waypoint x="370" y="130" />
+        <di:waypoint x="480" y="130" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

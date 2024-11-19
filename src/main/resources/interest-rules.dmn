@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Interestrules" name="Interest rules" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.24.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+  <decision id="Interest_rules" name="Interest rules" camunda:historyTimeToLive="P180D">
+    <decisionTable id="DecisionTable_1vehd3b">
+      <input id="Input_1" label="Cibil Score" camunda:inputVariable="cibil_score">
+        <inputExpression id="InputExpression_1" typeRef="long">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Interest rate" name="interestRate" typeRef="string" biodi:width="192" />
+      <rule id="DecisionRule_1k8d3bo">
+        <inputEntry id="UnaryTests_0uvk2ok">
+          <text>&lt;= 600</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13pj8fq">
+          <text>"9%"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_05wyhqt">
+        <inputEntry id="UnaryTests_1m8g18u">
+          <text>]600..800[</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_121ezxo">
+          <text>"8.5%"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qqu8cj">
+        <inputEntry id="UnaryTests_0zyjlhq">
+          <text>[800..900]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bxg5cm">
+          <text>"7.5%"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Interest_rules">
+        <dc:Bounds height="80" width="180" x="160" y="80" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
